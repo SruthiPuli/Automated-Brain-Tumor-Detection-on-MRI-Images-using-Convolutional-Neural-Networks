@@ -1,0 +1,114 @@
+<!-- MyApp/Templates/result.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat'; 
+            
+        }
+
+        .container{
+            margin-top : 10vh;
+            margin-left: 9vw;
+            box-sizing: border-box;
+            height: 80vh;
+            width: 80vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            border: #F500FF 5px solid;
+            border-radius: 10vh;
+        }
+
+        .inner-container{
+            box-sizing: border-box;
+            height: 60vh;
+            width: 80vw;
+            display: flex;
+            justify-content: center;
+            justify-content: center;
+            align-items: flex-start;
+            
+        }
+
+        h2{
+
+            font-size: 7vh;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+            color : #019ac4;
+        }
+        .left-part{
+            box-sizing: border-box;
+            height: 50vh;
+            width: 25vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .right-part{
+            box-sizing: border-box;
+            height: 50vh;
+            width: 45vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-size: 2.8vh;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+
+        }
+
+        .another-btn {
+            font-size: 3vh;
+            cursor: pointer;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+            border-radius: 5vh;
+            padding : 2vh;
+            background: #019ac4;
+            color : white;
+            border : none;
+        }
+
+        img{
+            height: 30vh;
+            width: 30vh;
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+
+        <div class="inner-container">
+            <div class="left-part">
+                <h2>Prediction</h2>
+                <img src="{{ image_url }}" alt="Uploaded Image">
+            </div>
+
+            <div class="right-part">
+
+                <div>Prediction: {{ result }} <br>
+                    {{description}}
+                </div>
+
+            </div>
+            </div>
+            <button onclick="window.location.href='{% url 'home' %}'" class="another-btn">Try Another Image</button>
+        
+
+    </div>
+</body>
+</html>

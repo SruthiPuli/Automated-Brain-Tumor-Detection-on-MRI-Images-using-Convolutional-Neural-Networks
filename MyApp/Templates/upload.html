@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Brain Tumor Detection</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat'; 
+        }
+
+        .container {
+            height: 100vh;
+            width: 100vw;
+            background: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;       
+        }
+
+        .inner-container {
+            height: 85vh;
+            width: 65vw;
+            border: #F500FF 5px solid;
+            border-radius: 10vh;
+            padding: 5vw;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+
+        .upload-label img:hover {
+            transform: scale(1.1);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #F500FF;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 3vh;
+            cursor: pointer;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #F500FF;
+            color: white;
+            border: none;
+            border-radius: 20px;
+            font-size: 3vh;
+            cursor: pointer;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+        }
+
+        .submit-btn {
+            background-color: #c300c3;
+        }
+
+        .heading , .form, .img-upload, .submit-btn, .filename{
+            box-sizing : border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 65vw;
+        }
+
+        .heading{
+            height: 10vh;
+            margin-bottom : 2vh;
+            font-size: 4vh;
+            cursor: pointer;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+            color : #F500FF;
+        }
+
+        .form{
+            height : 60vh;
+        }
+
+        .img-upload{
+            height: 45vh;
+        }
+
+        .submit-btn, .filename{
+            height: 10vh;
+            align-items: center;
+        }
+        .filename{
+            font-size: 3vh;
+            -webkit-text-stroke: 0.05vw;
+            letter-spacing: 0.02vw;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">    
+    <div class="inner-container">
+        <div class="heading ">
+            <h2>Upload MRI Image</h2>
+        </div>
+        <div class= "form">
+            <form action = 'upload/' method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                
+                <!-- Hidden file input -->
+                <input type="file" name="image" id="imageUpload" required>
+
+                <!-- Clickable cloud image -->
+
+                <div id="file-name" class="filename"></div>
+                <div class="img-upload">
+                    
+                    <label for="imageUpload" class="upload-label">
+                        <img src="/static/images/cloud.png" alt="Upload Image">
+                    </label>
+                </div>
+
+                <div class="submit-btn">
+                    <button type="submit" class="submit-btn">Detect Tumor</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script>
+    const fileInput = document.getElementById('imageUpload');
+    const fileNameDisplay = document.getElementById('file-name');
+
+    fileInput.addEventListener('change', function () {
+        if (fileInput.files.length > 0) {
+            fileNameDisplay.textContent = "Selected File: " + fileInput.files[0].name;
+        } else {
+            fileNameDisplay.textContent = "";
+        }
+    });
+</script>
+
+</body>
+</html>
