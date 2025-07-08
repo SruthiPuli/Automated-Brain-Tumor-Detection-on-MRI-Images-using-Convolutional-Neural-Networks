@@ -43,13 +43,6 @@ python manage.py runserver
 
 ## Usage
 
- ## 1: Typing a Few Letters to Save Time
-User Input: rec
-#### Suggestions:
-- recipe
-- record
-- recovery
-
 ### Usage Purpose:
 #### 1: Upload an MRI Image
 Upload an image from your local system using the file input form.
